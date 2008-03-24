@@ -1,5 +1,8 @@
 Revision history for FreeBSD-Ports-INDEXhash
 
+1.0.2	2008-03-23/12:10
+		Another small pod cleanup.
+
 1.0.1	2008-03-23/11:20
 		Clean up POD stuff a bit so 'make test' passes.
 
