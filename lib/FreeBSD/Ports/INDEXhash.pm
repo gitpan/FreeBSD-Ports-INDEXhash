@@ -14,11 +14,11 @@ FreeBSD::Ports::INDEXhash - Generates a hash out of the FreeBSD Ports index file
 
 =head1 VERSION
 
-Version 1.0.0
+Version 1.0.1
 
 =cut
 
-our $VERSION = '1.0.0';
+our $VERSION = '1.0.1';
 
 
 =head1 SYNOPSIS
@@ -179,43 +179,43 @@ The keys of the hash are names of the ports. Each entry is
 then another hash. See the list of keys below for the description
 of each one.
 
-=item info
+=head2 info
 
 This is a short description of the port.
 
-=item prefix
+=head2 prefix
 
 This is the install prefix the port will try to use.
 
-=item maintainer
+=head2 maintainer
 
 This is the email address for the port's maintainer.
 
-=item www
+=head2 www
 
 This is the web site of a port inquestion.
 
-=item Edeps
+=head2 Edeps
 
 This is the extract depends of a port. This is a array.
 
-=item Bdeps
+=head2 Bdeps
 
 This is the build depends for the port. This is a array.
 
-=item Pdeps
+=head2 Pdeps
 
 This is the package depends for a port. This is a array.
 
-=item Rdeps
+=head2 Rdeps
 
 This is the run depends of a port. This is a array.
 
-=item Fdeps
+=head2 Fdeps
 
 This is the fetch depends of a port. This is a array.
 
-=item categories
+=head2 categories
 
 This is all the categories a specific port falls under. This is a array.
 
