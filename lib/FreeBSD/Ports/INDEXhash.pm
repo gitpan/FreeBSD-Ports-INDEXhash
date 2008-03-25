@@ -14,44 +14,35 @@ FreeBSD::Ports::INDEXhash - Generates a hash out of the FreeBSD Ports index file
 
 =head1 VERSION
 
-Version 1.0.2
+Version 1.0.3
 
 =cut
 
-our $VERSION = '1.0.2';
+our $VERSION = '1.0.3';
 
 
 =head1 SYNOPSIS
-
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
 
 	use FreeBSD::Ports::INDEXhash qw/INDEXhash/;
 
 	my %hash=INDEXhash();
 
-	my @keys=keys(%hash);
-
-	my $keysInt=0;
-
-	while(defined($keys[$keysInt])){
-	    print "Name: ".$keys[$keysInt]."\n".
-	            "Info: ".$hash{$keys[$keysInt]}{info}."\n".
-	            "Prefix: ".$hash{$keys[$keysInt]}{prefix}."\n".
-	            "Maintainer: ".$hash{$keys[$keysInt]}{maintainer}."\n".
-	            "WWW: ".$hash{$keys[$keysInt]}{www}."\n".
-	            "Categories: ".join(" ", @{$hash{$keys[$keysInt]}{categories}})."\n".
-	            "E-deps: ".join(" ", @{$hash{$keys[$keysInt]}{Edeps}})."\n".
-	            "B-deps: ".join(" ", @{$hash{$keys[$keysInt]}{Bdeps}})."\n".
-	            "P-deps: ".join(" ", @{$hash{$keys[$keysInt]}{Pdeps}})."\n".
-	            "R-deps: ".join(" ", @{$hash{$keys[$keysInt]}{Rdeps}})."\n".
-	            "F-deps: ".join(" ", @{$hash{$keys[$keysInt]}{Fdeps}})."\n".
+	while(my ($name) = each %hash){
+	    print "Name: ".$name."\n".
+	            "Info: ".$hash{$name}{info}."\n".
+	            "Prefix: ".$hash{$name}{prefix}."\n".
+	            "Maintainer: ".$hash{$name}{maintainer}."\n".
+	            "WWW: ".$hash{$name}{www}."\n".
+	            "Categories: ".join(" ", @{$hash{$name}{categories}})."\n".
+	            "E-deps: ".join(" ", @{$hash{$name}{Edeps}})."\n".
+	            "B-deps: ".join(" ", @{$hash{$name}{Bdeps}})."\n".
+	            "P-deps: ".join(" ", @{$hash{$name}{Pdeps}})."\n".
+	            "R-deps: ".join(" ", @{$hash{$name}{Rdeps}})."\n".
+	            "F-deps: ".join(" ", @{$hash{$name}{Fdeps}})."\n".
 	            "\n";
 
-    	$keysInt++;
+	    $keysInt++;
 	};
-
 
 
 =head1 EXPORT
@@ -263,6 +254,7 @@ L<http://search.cpan.org/dist/FreeBSD-Ports-INDEXhash>
 
 =head1 ACKNOWLEDGEMENTS
 
+kevin brintnall <kbrint@rufus.net> for pointing out how useful the each function is
 
 =head1 COPYRIGHT & LICENSE
 
