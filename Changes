@@ -1,5 +1,8 @@
 Revision history for FreeBSD-Ports-INDEXhash
 
+1.0.4	2008-04-18/17:40
+	Finally fully implement the example using the each function.
+
 1.0.3	2008-03-23/12:10
 	Another small pod cleanup.
 	Make changes to synopsis as suggested by  kevin brintnall <kbrint@rufus.net>.

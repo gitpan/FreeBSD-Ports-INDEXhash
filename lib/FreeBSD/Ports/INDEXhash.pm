@@ -14,11 +14,11 @@ FreeBSD::Ports::INDEXhash - Generates a hash out of the FreeBSD Ports index file
 
 =head1 VERSION
 
-Version 1.0.3
+Version 1.0.4
 
 =cut
 
-our $VERSION = '1.0.3';
+our $VERSION = '1.0.4';
 
 
 =head1 SYNOPSIS
@@ -27,18 +27,18 @@ our $VERSION = '1.0.3';
 
 	my %hash=INDEXhash();
 
-	while(my ($name) = each %hash){
+	while(my ($name, $port) = each %hash){
 	    print "Name: ".$name."\n".
-	            "Info: ".$hash{$name}{info}."\n".
-	            "Prefix: ".$hash{$name}{prefix}."\n".
-	            "Maintainer: ".$hash{$name}{maintainer}."\n".
-	            "WWW: ".$hash{$name}{www}."\n".
-	            "Categories: ".join(" ", @{$hash{$name}{categories}})."\n".
-	            "E-deps: ".join(" ", @{$hash{$name}{Edeps}})."\n".
-	            "B-deps: ".join(" ", @{$hash{$name}{Bdeps}})."\n".
-	            "P-deps: ".join(" ", @{$hash{$name}{Pdeps}})."\n".
-	            "R-deps: ".join(" ", @{$hash{$name}{Rdeps}})."\n".
-	            "F-deps: ".join(" ", @{$hash{$name}{Fdeps}})."\n".
+	            "Info: ".$port->{info}."\n".
+	            "Prefix: ".$port->{prefix}."\n".
+	            "Maintainer: ".$port->{maintainer}."\n".
+	            "WWW: ".$port->{www}."\n".
+	            "Categories: ".join(" ", @{$port->{categories}})."\n".
+	            "E-deps: ".join(" ", @{$port->{Edeps}})."\n".
+	            "B-deps: ".join(" ", @{$port->{Bdeps}})."\n".
+	            "P-deps: ".join(" ", @{$port->{Pdeps}})."\n".
+	            "R-deps: ".join(" ", @{$port->{Rdeps}})."\n".
+	            "F-deps: ".join(" ", @{$port->{Fdeps}})."\n".
 	            "\n";
 
 	    $keysInt++;
