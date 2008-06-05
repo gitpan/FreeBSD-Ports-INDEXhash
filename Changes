@@ -1,5 +1,8 @@
 Revision history for FreeBSD-Ports-INDEXhash
 
+1.0.5	2008-06-05/13:35
+	Fixed issue with Fdeps always being defined due to a new line on the end of it.
+
 1.0.4	2008-04-18/17:40
 	Finally fully implement the example using the each function.
 
