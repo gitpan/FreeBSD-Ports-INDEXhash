@@ -14,11 +14,11 @@ FreeBSD::Ports::INDEXhash - Generates a hash out of the FreeBSD Ports index file
 
 =head1 VERSION
 
-Version 1.0.5
+Version 1.2.0
 
 =cut
 
-our $VERSION = '1.0.5';
+our $VERSION = '1.1.0';
 
 
 =head1 SYNOPSIS
@@ -75,6 +75,16 @@ sub INDEXhash {
 		chomp($fbsdversion);
 		$fbsdversion =~ s/\..+// ;
 		$index=$index.$fbsdversion;
+
+		if (! -f $index) {
+			if(!defined($ENV{PORTSDIR})){
+				$index="/usr/ports/INDEX";
+				
+			}else{
+				$index=$ENV{PORTSDIR}."/INDEX";
+			};
+		}
+
 	};
 
 	#error out if the it is not a file
@@ -89,7 +99,7 @@ sub INDEXhash {
 	my @rawindex=<INDEXFILE>;
 	close(INDEXFILE);
 	
-	my %hash=();
+	my %hash=(orginsN2D=>{}, originsD2N=>{});
 	
 	my $rawindexInt=0;
 	while(defined($rawindex[$rawindexInt])){
@@ -107,6 +117,18 @@ sub INDEXhash {
 								Fdeps=>[],
 								categories=>[]
 							};
+
+		#builds the origin mappings
+		$hash{originsN2D}{$linesplit[0]}=$linesplit[1];
+		$hash{originsD2N}{$linesplit[1]}=$linesplit[0];
+		#builds the short origin mappings
+		$hash{soriginsN2D}{$linesplit[0]}=$linesplit[1];
+		$hash{soriginsN2D}{$linesplit[0]}=~s/\/usr\/ports\///;
+		if (defined($ENV{PORTSDIR})) {
+			$hash{soriginsN2D}{$linesplit[0]}=~s/$ENV{PORTSDIR}//;
+			$hash{soriginsN2D}{$linesplit[0]}=~s/^\///;
+		}
+		$hash{soriginsD2N}{$hash{soriginsN2D}{$linesplit[0]}}=$linesplit[0];
 
 		my $depsInt=0;
 		chomp($linesplit[12]);
@@ -165,49 +187,69 @@ sub INDEXhash {
 
 =head1 HASH FORMAT
 
-The keys of the hash are names of the ports. Each entry is
-then another hash. See the list of keys below for the description
-of each one.
+Each entry, minus 'originsN2D' and 'originsD2N'.
 
-=head2 info
+=head2 ports hash
+
+=head3 info
 
 This is a short description of the port.
 
-=head2 prefix
+=head3 prefix
 
 This is the install prefix the port will try to use.
 
-=head2 maintainer
+=head3 maintainer
 
 This is the email address for the port's maintainer.
 
-=head2 www
+=head3 www
 
 This is the web site of a port inquestion.
 
-=head2 Edeps
+=head3 Edeps
 
 This is the extract depends of a port. This is a array.
 
-=head2 Bdeps
+=head3 Bdeps
 
 This is the build depends for the port. This is a array.
 
-=head2 Pdeps
+=head3 Pdeps
 
 This is the package depends for a port. This is a array.
 
-=head2 Rdeps
+=head3 Rdeps
 
 This is the run depends of a port. This is a array.
 
-=head2 Fdeps
+=head3 Fdeps
 
 This is the fetch depends of a port. This is a array.
 
-=head2 categories
+=head3 categories
 
 This is all the categories a specific port falls under. This is a array.
+
+=head2 originsN2D
+
+This contains a mapping of port names to the directory they are in.
+
+=head2 originsD2N
+
+This contains a mapping of directories to port names.
+
+=head2 soriginsD2N
+
+This is the same as 'originsD2N', but does not everything prior to
+the ports directory is removed. This is to make it easy for matching
+packages to ports.
+
+=head2 originsN2D
+
+
+This is the same as 'originsN2D', but does not everything prior to
+the ports directory is removed.
 
 =head1 AUTHOR
 
