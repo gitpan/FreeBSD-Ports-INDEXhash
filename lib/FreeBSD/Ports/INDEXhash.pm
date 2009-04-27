@@ -14,11 +14,11 @@ FreeBSD::Ports::INDEXhash - Generates a hash out of the FreeBSD Ports index file
 
 =head1 VERSION
 
-Version 1.2.0
+Version 1.2.1
 
 =cut
 
-our $VERSION = '1.1.0';
+our $VERSION = '1.2.1';
 
 
 =head1 SYNOPSIS
@@ -151,13 +151,14 @@ sub INDEXhash {
 		$depsInt=0;
 		my @Edeps=split(/ /, $linesplit[10]);
 		while(defined($Edeps[$depsInt])){
-			push(@{$hash{$linesplit[0]}{Edeps}}, $Pdeps[$depsInt]);
+			push(@{$hash{$linesplit[0]}{Edeps}}, $Edeps[$depsInt]);
 
 			$depsInt++;
 		};
 
+		$depsInt=0;
 		my @Rdeps=split(/ /, $linesplit[8]);
-		while(defined($Edeps[$depsInt])){
+		while(defined($Rdeps[$depsInt])){
 			push(@{$hash{$linesplit[0]}{Rdeps}}, $Rdeps[$depsInt]);
 
 			$depsInt++;

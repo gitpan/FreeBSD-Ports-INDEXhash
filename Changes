@@ -1,5 +1,9 @@
 Revision history for FreeBSD-Ports-INDEXhash
 
+1.2.1	2009-04-27/12:00
+		-Edeps now processes Edeps instead of Pdeps.
+		-Rdeps now properly inters through Rdeps.
+
 1.2.0	2009-03-25/13:00
 		-Implement short origin mapping.
 
