@@ -1,5 +1,8 @@
 Revision history for FreeBSD-Ports-INDEXhash
 
+1,2,2	2010-08-28/06:00
+		-Require Exporter to make Perl 5.10 happy.
+
 1.2.1	2009-04-27/12:00
 		-Edeps now processes Edeps instead of Pdeps.
 		-Rdeps now properly inters through Rdeps.

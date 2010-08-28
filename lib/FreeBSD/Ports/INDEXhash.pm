@@ -3,6 +3,7 @@ package FreeBSD::Ports::INDEXhash;
 use warnings;
 use strict;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+require Exporter;
 
 @EXPORT_OK   = qw(INDEXhash);
 @ISA         = qw(Exporter);
@@ -14,11 +15,11 @@ FreeBSD::Ports::INDEXhash - Generates a hash out of the FreeBSD Ports index file
 
 =head1 VERSION
 
-Version 1.2.1
+Version 1.2.2
 
 =cut
 
-our $VERSION = '1.2.1';
+our $VERSION = '1.2.2';
 
 
 =head1 SYNOPSIS
